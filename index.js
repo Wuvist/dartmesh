@@ -3343,23 +3343,6 @@
     },
     unmangleGlobalNameIfPreservedAnyways: function($name) {
       return init.mangledGlobalNames[$name];
-    },
-    printString: function(string) {
-      if (typeof dartPrint == "function") {
-        dartPrint(string);
-        return;
-      }
-      if (typeof console == "object" && typeof console.log != "undefined") {
-        console.log(string);
-        return;
-      }
-      if (typeof window == "object")
-        return;
-      if (typeof print == "function") {
-        print(string);
-        return;
-      }
-      throw "Unable to print message: " + String(string);
     }
   },
   J = {
@@ -7147,26 +7130,22 @@
     }
   },
   S = {
-    myFunction: function() {
+    fetchPubspec: function() {
       var $async$goto = 0,
         $async$completer = P._makeAsyncAwaitCompleter(type$.legacy_String),
-        $async$returnValue, $async$temp1, $async$temp2, $async$temp3;
-      var $async$myFunction = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
+        $async$returnValue;
+      var $async$fetchPubspec = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return P._asyncRethrow($async$result, $async$completer);
         while (true)
           switch ($async$goto) {
             case 0:
               // Function start
-              $async$temp1 = H;
-              $async$temp2 = H;
-              $async$temp3 = J;
               $async$goto = 3;
-              return P._asyncAwait(G.read("http://localhost:8000/pubspec.yaml"), $async$myFunction);
+              return P._asyncAwait(G.read("/pubspec.yaml"), $async$fetchPubspec);
             case 3:
               // returning from await.
-              $async$temp1.printString($async$temp2.S($async$temp3.toString$0$($async$result)));
-              $async$returnValue = "done";
+              $async$returnValue = $async$result;
               // goto return
               $async$goto = 1;
               break;
@@ -7175,17 +7154,17 @@
               return P._asyncReturn($async$returnValue, $async$completer);
           }
       });
-      return P._asyncStartSync($async$myFunction, $async$completer);
+      return P._asyncStartSync($async$fetchPubspec, $async$completer);
     },
-    _someDartFunction: function() {
-      return new self.Promise(P.allowInterop(new S._someDartFunction_closure(S.myFunction()), type$.legacy_void_Function_2_legacy_void_Function_legacy_String_and_legacy_Function), type$.legacy_String);
+    _fetchPubspecWrap: function() {
+      return new self.Promise(P.allowInterop(new S._fetchPubspecWrap_closure(S.fetchPubspec()), type$.legacy_void_Function_2_legacy_void_Function_legacy_String_and_legacy_Function), type$.legacy_String);
     },
     main: function() {
-      self.functionName = P.allowInterop(S.main___someDartFunction$closure(), type$.legacy_void_Function);
+      self.fetchPubspec = P.allowInterop(S.main___fetchPubspecWrap$closure(), type$.legacy_void_Function);
     },
     Promise: function Promise() {
     },
-    _someDartFunction_closure: function _someDartFunction_closure(t0) {
+    _fetchPubspecWrap_closure: function _fetchPubspecWrap_closure(t0) {
       this.myFuture = t0;
     }
   };
@@ -13606,7 +13585,7 @@
     }
   };
   S.Promise.prototype = {};
-  S._someDartFunction_closure.prototype = {
+  S._fetchPubspecWrap_closure.prototype = {
     call$2: function(resolve, reject) {
       this.myFuture.then$1$2$onError(0, type$.legacy_void_Function_legacy_String._as(resolve), type$.legacy_Function._as(reject), type$.void);
     },
@@ -13663,7 +13642,7 @@
     _static_1(P, "core_Uri_decodeComponent$closure", "Uri_decodeComponent", 55);
     _instance_2_i(W.HttpRequest.prototype, "get$setRequestHeader", "setRequestHeader$2", 26);
     _instance(Y.SourceFile.prototype, "get$span", 0, 1, null, ["call$2", "call$1"], ["span$2", "span$1"], 42, 0);
-    _static_0(S, "main___someDartFunction$closure", "_someDartFunction", 56);
+    _static_0(S, "main___fetchPubspecWrap$closure", "_fetchPubspecWrap", 56);
     _static(P, "math__max$closure", 2, null, ["call$1$2", "call$2"], ["max", function(a, b) {
       return P.max(a, b, type$.num);
     }], 37, 1);
@@ -13692,7 +13671,7 @@
     _inherit(P.UnmodifiableMapView, P._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(H.ConstantMapView, P.UnmodifiableMapView);
     _inherit(H.ConstantStringMap, H.ConstantMap);
-    _inheritMany(H.Closure, [H.Instantiation, H.Primitives_functionNoSuchMethod_closure, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.initHooks_closure, H.initHooks_closure0, H.initHooks_closure1, P._AsyncRun__initializeScheduleImmediate_internalCallback, P._AsyncRun__initializeScheduleImmediate_closure, P._AsyncRun__scheduleImmediateJsOverride_internalCallback, P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, P._TimerImpl_internalCallback, P._awaitOnObject_closure, P._awaitOnObject_closure0, P._wrapJsFunctionForAsync_closure, P._Future__addListener_closure, P._Future__prependListeners_closure, P._Future__chainForeignFuture_closure, P._Future__chainForeignFuture_closure0, P._Future__chainForeignFuture_closure1, P._Future__asyncCompleteWithValue_closure, P._Future__chainFuture_closure, P._Future__asyncCompleteError_closure, P._Future__propagateToListeners_handleWhenCompleteCallback, P._Future__propagateToListeners_handleWhenCompleteCallback_closure, P._Future__propagateToListeners_handleValueCallback, P._Future__propagateToListeners_handleError, P.Stream_Stream$fromIterable_closure, P.Stream_length_closure, P.Stream_length_closure0, P.Stream_first_closure, P.Stream_first_closure0, P._BufferingStreamSubscription__sendError_sendError, P._BufferingStreamSubscription__sendDone_sendDone, P._PendingEvents_schedule_closure, P._cancelAndValue_closure, P._rootHandleUncaughtError_closure, P._RootZone_bindCallback_closure, P._RootZone_bindCallbackGuarded_closure, P._RootZone_bindUnaryCallbackGuarded_closure, P._LinkedCustomHashMap_closure, P.MapBase_mapToString_closure, P.Utf8Decoder_closure, P.Utf8Decoder_closure0, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_error, P.Uri_parseIPv6Address_parseHex, P._createTables_closure, P._createTables_build, P._createTables_setChars, P._createTables_setRange, W._EventStreamSubscription_closure, W._EventStreamSubscription_onData_closure, P._AcceptStructuredClone_walk_closure, P.promiseToFuture_closure, P.promiseToFuture_closure0, M.CanonicalizedMap_addAll_closure, M.CanonicalizedMap_forEach_closure, M.CanonicalizedMap_toString_closure, M._isToStringVisiting_closure, G.read_closure, G.BaseRequest_closure, G.BaseRequest_closure0, O.BrowserClient_send_closure, O.BrowserClient_send__closure, O.BrowserClient_send__closure0, O.BrowserClient_send_closure0, Z.ByteStream_toBytes_closure, Z.CaseInsensitiveMap$from_closure, Z.CaseInsensitiveMap$from_closure0, R.MediaType_MediaType$parse_closure, R.MediaType_toString_closure, R.MediaType_toString__closure, N.expectQuotedString_closure, M.Context_join_closure, M.Context_joinAll_closure, M.Context_split_closure, M._validateArgList_closure, X.ParsedPath_normalize_closure, U.Highlighter_closure, U.Highlighter$__closure, U.Highlighter$___closure, U.Highlighter$__closure0, U.Highlighter__collateLines_closure, U.Highlighter__collateLines_closure0, U.Highlighter__collateLines_closure1, U.Highlighter__collateLines__closure, U.Highlighter_highlight_closure, U.Highlighter_highlight_closure0, U.Highlighter__writeFileStart_closure, U.Highlighter__writeMultilineHighlights_closure, U.Highlighter__writeMultilineHighlights_closure0, U.Highlighter__writeMultilineHighlights_closure1, U.Highlighter__writeMultilineHighlights_closure2, U.Highlighter__writeMultilineHighlights__closure, U.Highlighter__writeMultilineHighlights__closure0, U.Highlighter__writeHighlightedText_closure, U.Highlighter__writeIndicator_closure, U.Highlighter__writeIndicator_closure0, U.Highlighter__writeIndicator_closure1, U.Highlighter__writeSidebar_closure, U._Highlight_closure, S._someDartFunction_closure]);
+    _inheritMany(H.Closure, [H.Instantiation, H.Primitives_functionNoSuchMethod_closure, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.initHooks_closure, H.initHooks_closure0, H.initHooks_closure1, P._AsyncRun__initializeScheduleImmediate_internalCallback, P._AsyncRun__initializeScheduleImmediate_closure, P._AsyncRun__scheduleImmediateJsOverride_internalCallback, P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, P._TimerImpl_internalCallback, P._awaitOnObject_closure, P._awaitOnObject_closure0, P._wrapJsFunctionForAsync_closure, P._Future__addListener_closure, P._Future__prependListeners_closure, P._Future__chainForeignFuture_closure, P._Future__chainForeignFuture_closure0, P._Future__chainForeignFuture_closure1, P._Future__asyncCompleteWithValue_closure, P._Future__chainFuture_closure, P._Future__asyncCompleteError_closure, P._Future__propagateToListeners_handleWhenCompleteCallback, P._Future__propagateToListeners_handleWhenCompleteCallback_closure, P._Future__propagateToListeners_handleValueCallback, P._Future__propagateToListeners_handleError, P.Stream_Stream$fromIterable_closure, P.Stream_length_closure, P.Stream_length_closure0, P.Stream_first_closure, P.Stream_first_closure0, P._BufferingStreamSubscription__sendError_sendError, P._BufferingStreamSubscription__sendDone_sendDone, P._PendingEvents_schedule_closure, P._cancelAndValue_closure, P._rootHandleUncaughtError_closure, P._RootZone_bindCallback_closure, P._RootZone_bindCallbackGuarded_closure, P._RootZone_bindUnaryCallbackGuarded_closure, P._LinkedCustomHashMap_closure, P.MapBase_mapToString_closure, P.Utf8Decoder_closure, P.Utf8Decoder_closure0, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_error, P.Uri_parseIPv6Address_parseHex, P._createTables_closure, P._createTables_build, P._createTables_setChars, P._createTables_setRange, W._EventStreamSubscription_closure, W._EventStreamSubscription_onData_closure, P._AcceptStructuredClone_walk_closure, P.promiseToFuture_closure, P.promiseToFuture_closure0, M.CanonicalizedMap_addAll_closure, M.CanonicalizedMap_forEach_closure, M.CanonicalizedMap_toString_closure, M._isToStringVisiting_closure, G.read_closure, G.BaseRequest_closure, G.BaseRequest_closure0, O.BrowserClient_send_closure, O.BrowserClient_send__closure, O.BrowserClient_send__closure0, O.BrowserClient_send_closure0, Z.ByteStream_toBytes_closure, Z.CaseInsensitiveMap$from_closure, Z.CaseInsensitiveMap$from_closure0, R.MediaType_MediaType$parse_closure, R.MediaType_toString_closure, R.MediaType_toString__closure, N.expectQuotedString_closure, M.Context_join_closure, M.Context_joinAll_closure, M.Context_split_closure, M._validateArgList_closure, X.ParsedPath_normalize_closure, U.Highlighter_closure, U.Highlighter$__closure, U.Highlighter$___closure, U.Highlighter$__closure0, U.Highlighter__collateLines_closure, U.Highlighter__collateLines_closure0, U.Highlighter__collateLines_closure1, U.Highlighter__collateLines__closure, U.Highlighter_highlight_closure, U.Highlighter_highlight_closure0, U.Highlighter__writeFileStart_closure, U.Highlighter__writeMultilineHighlights_closure, U.Highlighter__writeMultilineHighlights_closure0, U.Highlighter__writeMultilineHighlights_closure1, U.Highlighter__writeMultilineHighlights_closure2, U.Highlighter__writeMultilineHighlights__closure, U.Highlighter__writeMultilineHighlights__closure0, U.Highlighter__writeHighlightedText_closure, U.Highlighter__writeIndicator_closure, U.Highlighter__writeIndicator_closure0, U.Highlighter__writeIndicator_closure1, U.Highlighter__writeSidebar_closure, U._Highlight_closure, S._fetchPubspecWrap_closure]);
     _inherit(H.Instantiation1, H.Instantiation);
     _inherit(H.NullError, P.TypeError);
     _inheritMany(H.TearOffClosure, [H.StaticClosure, H.BoundClosure]);

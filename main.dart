@@ -10,8 +10,8 @@ import 'package:http/http.dart' as http;
 // }
 
 /// Allows assigning a function to be callable from `window.functionName()`
-@JS('functionName')
-external set _functionName(void Function() f);
+@JS('fetchPubspec')
+external set _fetchPubspec(void Function() f);
 
 /// Allows calling the assigned function from Dart as well.
 @JS()
@@ -23,20 +23,19 @@ class Promise<T> {
   external Promise then(void onFulfilled(T result), [Function onRejected]);
 }
 
-Future<String> myFunction() async {
-  var url = 'http://localhost:8000/pubspec.yaml';
-  print(await http.read(url));
-  return "done";
+Future<String> fetchPubspec() async {
+  var url = '/pubspec.yaml';
+  var result = await http.read(url);
+  return result;
 }
 
-Promise<String> _someDartFunction() {
-  var myFuture = myFunction();
+Promise<String> _fetchPubspecWrap() {
+  var myFuture = fetchPubspec();
   return new Promise<String>(allowInterop((resolve, reject) {
     myFuture.then(resolve, onError: reject);
   }));
 }
 
 void main() {
-  _functionName = allowInterop(_someDartFunction);
-  // JavaScript code may now call `functionName()` or `window.functionName()`.
+  _fetchPubspec = allowInterop(_fetchPubspecWrap);
 }
